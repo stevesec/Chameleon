@@ -71,5 +71,5 @@ class McAfee:
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    ts = TrustedSource(url)
+    ts = McAfee(url)
     ts.check_category(True)
