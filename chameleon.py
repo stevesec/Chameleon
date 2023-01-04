@@ -62,7 +62,7 @@ class Chameleon:
         
         if args.proxy == 'm' or args.proxy == 'a':
             print("\033[1;34m[-] Targeting McAfee Trustedsource\033[0;0m")
-            ts = trustedsource.TrustedSource(args.domain)
+            ts = mcafee.McAfee(args.domain)
             if args.check:
                 checkresults = ts.check_category(False).strip("- ")
                 if args.redelk:

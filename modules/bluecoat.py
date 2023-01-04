@@ -13,7 +13,7 @@ import os
 class NewHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path == '/':
-            self.path = 'webroot/index.html'
+            self.path = '/var/www/index.html'
         return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 
@@ -72,9 +72,9 @@ class Bluecoat:
                          "Accept-Encoding": "gzip, deflate", "Referer": "https://sitereview.bluecoat.com/",
                          "X-XSRF-TOKEN": "028e5984-50bf-4c00-ad38-87d19957201a",
                          "Content-Type": "application/json; charset=utf-8", "Connection": "close"}
-        data = {"captcha": "", "key": "",
-                      "phrase": "RXZlbiBpZiB5b3UgYXJlIG5vdCBwYXJ0IG9mIGEgY29tbWVyY2lhbCBvcmdhbml6YXRpb24sIHNjcmlwdGluZyBhZ2FpbnN0IFNpdGUgUmV2aWV3IGlzIHN0aWxsIGFnYWluc3QgdGhlIFRlcm1zIG9mIFNlcnZpY2U=",
-                      "source": "new lookup", "url": self.url}
+        data = {"captcha": "", "key": "76f51d72e7bda770a66465050bc23a729238c90cf9ef6cea9f59f4eb01e24172",
+                      "phrase": "2e584f2637aab48f3fbfe93dee666fb0e03242bb6e28be0724e6ed4bf68c2a3d",
+                      "source": "new lookup", "url": "vsscentre.com"}
         response = session.post(url, headers=headers, cookies=cookies, json=data)
 
         try:
@@ -85,6 +85,7 @@ class Bluecoat:
                     return("Blocked by BlueCoat")
                     sys.exit(0)
             category = []
+            print(json_data)
             for entry in json_data["categorization"]:
                 category.append(entry["name"])
             cat = ', '.join(category)
